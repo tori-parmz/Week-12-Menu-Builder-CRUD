@@ -24,7 +24,7 @@ class MenuItem {
 //create class for menu service AJAX
 
 class MenuService {
-    static url = "https://64150cdae8fe5a3f3a143d74.mockapi.io/categories";
+    static url = "https://64150cdae8fe5a3f3a143d74.mockapi.io/menuCategories";
     static getAllCategories() {
         return $.get(this.url);
 
@@ -103,6 +103,7 @@ class DOMManager {
             if (menuCategory.id == menuCategoryId) {
                 for (let menuItem of menuCategory.menuItems) {
                     if(menuItem.id == menuItemId) {
+                        console.log(menuCategory.menuItems);
                         menuCategory.menuItems.splice(menuCategory.menuItems.indexOf(menuItem), 1);
                         MenuService.updateCategory(menuCategory)
                         .then(() => {
