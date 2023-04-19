@@ -15,9 +15,12 @@ class MenuCategory {
 //create classes for menu items
 
 class MenuItem {
+    static counter = 0; //calls on the class directly
     constructor(name, price) { //menu items will take a name, dollar amount price, and 1-2 sentence description
         this.name = name;
         this.price = price;
+        this.id = MenuItem.counter++;//every time you create a subobject, it will increase the counter for each new object
+        //
     }
 }
 
@@ -147,8 +150,8 @@ class DOMManager {
                 $(`#${menuCategory.id}`).find('.card-body').append(
                     `
                     <p>
-                    <span id="name-${menuItem.id}"><strong>Name: </strong> ${menuItem.name}</span>
-                    <span id="area-${menuItem.id}"><strong>Area: </strong> ${menuItem.price}</span>
+                    <span id="name-${menuItem.id}">${menuItem.name}</span>
+                    <span id="area-${menuItem.id}"><strong>Price: </strong> ${menuItem.price}</span>
                     <button class="btn btn-danger" onClick="DOMManager.deleteMenuItem('${menuCategory.id}', '${menuItem.id}')">Delete Item</button>
                     `
                     
